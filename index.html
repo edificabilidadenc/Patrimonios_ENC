@@ -1,0 +1,2194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Bienes_Valor_Patrimonial_Polgonos_1.js"></script>
+        <script src="data/LimiteDistrito_2.js"></script>
+        <script src="data/Bienesdevalorpatrimonial_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-27.343681576472825,-55.87595870186786],[-27.33366270667424,-55.858145406900086]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_Mapabase_0');
+        map.getPane('pane_Mapabase_0').style.zIndex = 400;
+        var layer_Mapabase_0 = L.tileLayer('https://worldtiles3.waze.com/tiles/{z}/{x}/{y}.png', {
+            pane: 'pane_Mapabase_0',
+            opacity: 0.8,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_Mapabase_0;
+        map.addLayer(layer_Mapabase_0);
+        function pop_Bienes_Valor_Patrimonial_Polgonos_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nombre</th>\
+                        <td>' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td>' + (feature.properties['Tipo'] !== null ? autolinker.link(feature.properties['Tipo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Subtipo</th>\
+                        <td>' + (feature.properties['Subtipo'] !== null ? autolinker.link(feature.properties['Subtipo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Foto</th>\
+                        <td>' + (feature.properties['Foto'] !== null ? autolinker.link(feature.properties['Foto'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bienes_Valor_Patrimonial_Polgonos_1_0(feature) {
+            switch(String(feature.properties['Nombre'])) {
+                case 'ALMACÉN DE DON TERENTI':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ARBOL DE KURUPAY':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(69,116,40,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BIBLIOTECA PÚBLICA "CAYO Y EMILIO ROMERO PEREIRA"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C.R.E.E. CENTRO REGIONAL DE EDUCACIÓN "GRAL. PATRICIO ESCOBAR"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA ALVARENGA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA BÁEZ SOLER':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA DE LA CULTURA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA DE LA VICTORIA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA NICOLICHIA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA OTAZU NOGUERA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA OTAZÚ SOLER':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA PETTA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA RIVAS ALBORNO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA SAN JUAN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA SOLER GÓMEZ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA VIGO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA WAPENKA GALEANO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CATEDRAL DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CEMENTERIO MUNICIPAL':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRO CÍVICO "BETTY Y MARIO PEREZ"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRO DE DESARROLLO COMUNITARIO MUNICIPAL':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CHIMENEA DE LA FABRIL':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CLUB SOCIAL DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'COLEGIO INMACULADA CONCEPCIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'COLEGIO TÉCNICO NACIONAL Y CENTRO DE ENTRENAMIENTO VOCACIONAL':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CONJUNTO SANTUARIO DE LA VIRGEN DE ITAKUA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCALINATA DE SAN PEDRO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCUELA ALEMANA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCUELA BÁSICA N° 233 DOCTOR JOSÉ GASPAR RODRÍGUEZ DE FRANCIA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ex Escuela Normal Elemental Nº 4 "CLEMENTINA IRRAZABAL" - Actual CEMA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'EX RADIO ENCARNACIÓN (ACTUAL CEDUM)':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA "PRESENTACION DE MARIA EN EL TEMPLO"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA DE LA INMACULADA CONCEPCIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA ORTODOXA RUSA "SAN NICOLAS"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA ORTODOXA UCRANIANA "SAN JORGE"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA SAN ROQUE GONZALEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA SANTA ROSA DE LIMA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MINI ZOOLÓGICO DEL COLEGIO JUAN XXIII':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MOLINO SAN JOSÉ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO 1.000 AÑOS CRISTIANISMO EN UCRANIA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO A LAS PASERAS':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO A SAN ROQUE GONZÁLEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO AL PADRE CARLOS BOLIK':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MUNICIPALIDAD DE ENCARNACIÃ“N':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE DE LA CIUDAD':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE DE LA SALUD':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE MUNICIPAL DE QUITERIA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LA VILLA BAJA':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS AROMAS Y RINCÓN DE NUESTROS POETAS':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS ENAMORADOS':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS MIGRANTES':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PÉRGOLA Y ESCENARIO PLAYA SAN JOSÉ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZA DE ARMAS':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA "MARISCAL FRANCISCO SOLANO LOPEZ"':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA DEL SOLDADO PARAGUAYO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA SAN ROQUE GONZALEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA VIRGEN DE LA ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'RÉPLICA ESTACIÓN DE TRENES':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SEDE A.N.R. PARTIDO COLORADO':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SEDE PARTIDO LIBERAL':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SILO MAG':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TERMINAL DE ÓMNIBUS DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'YKUA SAN BLAS':
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Bienes_Valor_Patrimonial_Polgonos_1');
+        map.getPane('pane_Bienes_Valor_Patrimonial_Polgonos_1').style.zIndex = 401;
+        map.getPane('pane_Bienes_Valor_Patrimonial_Polgonos_1').style['mix-blend-mode'] = 'normal';
+        var layer_Bienes_Valor_Patrimonial_Polgonos_1 = new L.geoJson(json_Bienes_Valor_Patrimonial_Polgonos_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Bienes_Valor_Patrimonial_Polgonos_1',
+            layerName: 'layer_Bienes_Valor_Patrimonial_Polgonos_1',
+            pane: 'pane_Bienes_Valor_Patrimonial_Polgonos_1',
+            onEachFeature: pop_Bienes_Valor_Patrimonial_Polgonos_1,
+            style: style_Bienes_Valor_Patrimonial_Polgonos_1_0,
+        });
+        bounds_group.addLayer(layer_Bienes_Valor_Patrimonial_Polgonos_1);
+        map.addLayer(layer_Bienes_Valor_Patrimonial_Polgonos_1);
+        function pop_LimiteDistrito_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LimiteDistrito_2_0() {
+            return {
+                pane: 'pane_LimiteDistrito_2',
+                opacity: 1,
+                color: 'rgba(253,191,111,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 6.0, 
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_LimiteDistrito_2');
+        map.getPane('pane_LimiteDistrito_2').style.zIndex = 402;
+        map.getPane('pane_LimiteDistrito_2').style['mix-blend-mode'] = 'normal';
+        var layer_LimiteDistrito_2 = new L.geoJson(json_LimiteDistrito_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_LimiteDistrito_2',
+            layerName: 'layer_LimiteDistrito_2',
+            pane: 'pane_LimiteDistrito_2',
+            onEachFeature: pop_LimiteDistrito_2,
+            style: style_LimiteDistrito_2_0,
+        });
+        bounds_group.addLayer(layer_LimiteDistrito_2);
+        map.addLayer(layer_LimiteDistrito_2);
+        function pop_Bienesdevalorpatrimonial_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td>' + (feature.properties['Tipo'] !== null ? autolinker.link(feature.properties['Tipo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Subtipo</th>\
+                        <td>' + (feature.properties['Subtipo'] !== null ? autolinker.link(feature.properties['Subtipo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nombre</th>\
+                        <td>' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Foto</th>\
+                        <td>' + (feature.properties['Foto'] !== null ? autolinker.link(feature.properties['Foto'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bienesdevalorpatrimonial_3_0(feature) {
+            switch(String(feature.properties['Nombre'])) {
+                case 'Almacén de Don Terenti':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ARBOL DE KURUPAY':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(69,116,40,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BIBLIOTECA PÚBLICA "CAYO Y EMILIO ROMERO PEREIRA"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C.R.E.E. CENTRO REGIONAL DE EDUCACIÓN "GRAL. PATRICIO ESCOBAR"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA ALVARENGA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA BÁEZ SOLER':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA DE LA CULTURA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA DE LA VICTORIA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA NICOLICHIA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA OTAZU NOGUERA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA OTAZÚ SOLER':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA PETTA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA RIVAS ALBORNO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA SAN JUAN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA SOLER GÓMEZ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA VIGO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CASA WAPENKA GALEANO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CATEDRAL DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CEMENTERIO MUNICIPAL':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRO CÍVICO "BETTY Y MARIO PEREZ"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CENTRO DE DESARROLLO COMUNITARIO MUNICIPAL':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CHIMENEA DE LA FABRIL':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CLUB SOCIAL DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'COLEGIO DE LA INMACULADA CONCEPCIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'COLEGIO TÉCNICO NACIONAL Y CENTRO DE ENTRENAMIENTO VOCACIONAL':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CONJUNTO SANTUARIO DE LA VIRGEN DE ITAKUA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCALINATA DE SAN PEDRO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCUELA ALEMANA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ESCUELA BÁSICA N° 233 DOCTOR JOSÉ GASPAR RODRÍGUEZ DE FRANCIA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ex Escuela Normal Elemental Nº 4 “CLEMENTINA IRRAZABAL” - Actual CEMA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'EX RADIO ENCARNACIÓN (ACTUAL CEDUM)':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA "PRESENTACION DE MARIA EN EL TEMPLO"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA DE LA INMACULADA CONCEPCIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA ORTODOXA RUSA "SAN NICOLAS"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA ORTODOXA UCRANIANA "SAN JORGE"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA SAN ROQUE GONZALEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'IGLESIA SANTA ROSA DE LIMA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MINI ZOOLÓGICO DEL COLEGIO JUAN XXIII':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MOLINO SAN JOSÉ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO 1.000 AÑOS CRISTIANISMO EN UCRANIA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO A LAS PASERAS':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO A SAN ROQUE GONZÁLEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MONUMENTO AL PADRE CARLOS BOLIK':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,125,143,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MUNICIPALIDAD DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE DE LA CIUDAD':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE DE LA SALUD':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARQUE MUNICIPAL DE QUITERIA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LA VILLA BAJA':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS AROMAS Y RINCON DE NUESTROS POETAS':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS ENAMORADOS':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PASEO DE LOS MIGRANTES':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PÉRGOLA Y ESCENARIO PLAYA SAN JOSÉ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZA DE ARMAS':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA "MARISCAL FRANCISCO SOLANO LOPEZ"':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA DEL SOLDADO PARAGUAYO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA SAN ROQUE GONZALEZ DE SANTA CRUZ':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PLAZOLETA VIRGEN DE LA ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,166,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'RÉPLICA ESTACIÓN DE TRENES':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SEDE A.N.R. PARTIDO COLORADO':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SEDE PARTIDO LIBERAL':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SILO MAG':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TERMINAL DE ÓMNIBUS DE ENCARNACIÓN':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'YKUA SAN BLAS':
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Bienesdevalorpatrimonial_3',
+                radius: 4.6,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,131,97,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Bienesdevalorpatrimonial_3');
+        map.getPane('pane_Bienesdevalorpatrimonial_3').style.zIndex = 403;
+        map.getPane('pane_Bienesdevalorpatrimonial_3').style['mix-blend-mode'] = 'normal';
+        var layer_Bienesdevalorpatrimonial_3 = new L.geoJson(json_Bienesdevalorpatrimonial_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Bienesdevalorpatrimonial_3',
+            layerName: 'layer_Bienesdevalorpatrimonial_3',
+            pane: 'pane_Bienesdevalorpatrimonial_3',
+            onEachFeature: pop_Bienesdevalorpatrimonial_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Bienesdevalorpatrimonial_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Bienesdevalorpatrimonial_3);
+        map.addLayer(layer_Bienesdevalorpatrimonial_3);
+        setBounds();
+        var i = 0;
+        layer_Bienesdevalorpatrimonial_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nombre'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'Bebas Neue\', sans-serif;">' + layer.feature.properties['Nombre']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Bienesdevalorpatrimonial_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Bienesdevalorpatrimonial_3]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Bienesdevalorpatrimonial_3]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Bienesdevalorpatrimonial_3]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Bienesdevalorpatrimonial_3]);
+        });
+        </script>
+    </body>
+</html>
